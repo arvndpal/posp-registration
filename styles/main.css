@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .background-light {
+    @apply bg-light-850;
+  }
+  .background-sidebar {
+    @apply bg-[#0f2972];
+  }
+
+  .light-border {
+    @apply border-light-800;
+  }
+
+  .light-border-2 {
+    @apply border-light-700;
+  }
+
+  .base-bold {
+    @apply text-[16px] font-bold leading-[140%];
+  }
+  .base-medium {
+    @apply text-[16px] font-medium leading-[140%];
+  }
+}
