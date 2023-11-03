@@ -1,12 +1,13 @@
 'use client';
 
 import { UploadCloudIcon, X } from 'lucide-react';
+import Image from 'next/image';
 import * as React from 'react';
 import { useDropzone, type DropzoneOptions } from 'react-dropzone';
 import { twMerge } from 'tailwind-merge';
 
 const variants = {
-  base: 'relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out',
+  base: 'relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[150px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out',
   image:
     'border-0 p-0 min-h-0 min-w-0 relative shadow-md bg-slate-200 dark:bg-slate-900 rounded-md',
   active: 'border-2',
@@ -73,7 +74,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
       onDrop: (acceptedFiles) => {
         const file = acceptedFiles[0];
         if (file) {
-          void onChange?.(file);
+          onChange?.(file);
         }
       },
       ...dropzoneOptions,
@@ -135,10 +136,12 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
 
           {imageUrl ? (
             // Image Preview
-            <img
+            <Image
               className="h-full w-full rounded-md object-cover"
               src={imageUrl}
               alt={acceptedFiles[0]?.name}
+              height={100}
+              width={100}
             />
           ) : (
             // Upload Icon
@@ -157,7 +160,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
               className="group absolute right-0 top-0 -translate-y-1/4 translate-x-1/4"
               onClick={(e) => {
                 e.stopPropagation();
-                void onChange?.(undefined);
+                onChange?.(undefined);
               }}
             >
               <div className="flex h-5 w-5 items-center justify-center rounded-md border border-solid border-gray-500 bg-white transition-all duration-300 hover:h-6 hover:w-6 dark:border-gray-400 dark:bg-black">

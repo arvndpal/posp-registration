@@ -9,7 +9,6 @@ const edgeStoreRouter = es.router({
   // secretKey:process.env.EDGE_STORE_SECRET_KEY,
   publicFiles: es.fileBucket(),
 });
-console.log('edgerouterre', edgeStoreRouter);
 const handler = createEdgeStoreNextHandler({
   router: edgeStoreRouter,
 });
